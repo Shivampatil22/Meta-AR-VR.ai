@@ -108,7 +108,13 @@ We welcome contributions from developers, designers, and creators to enhance the
 ## video
 ![Youtube Walkthrough Video](https://www.youtube.com/watch?v=nwlWtFL1Gkg)
 
-
+##HowToRun
+ 1.Run the server.js in Socket-Server
+ 2.run the app.py in Langchain-RAG-Server (`python app.py`)
+ 3.Run the index.js in the Backend (`nodemon index.js`)
+ 4.AR-server - do `npx vite --host` (AR depends on your PC's Compatiblity)
+ 5.Now just do `npm start` in the main directort
+ 6.For Threter you must have `ErsatzTV` setup IPTV server or A Jellyfin server.
 
 ## Contract address
 0x64bd384eA6d6B76ee7C3E1248beaA9cE3157f9dD
