@@ -109,9 +109,11 @@ We welcome contributions from developers, designers, and creators to enhance the
 ![Youtube Walkthrough Video](https://www.youtube.com/watch?v=nwlWtFL1Gkg)
 
 
+
 ## Contract address
- 0xD663f267A074CE8A3580872DbD953981F4d83029
-https://sepolia.etherscan.io/address/0xd663f267a074ce8a3580872dbd953981f4d83029
+0x64bd384eA6d6B76ee7C3E1248beaA9cE3157f9dD
+https://sepolia.etherscan.io/address/0x64bd384eA6d6B76ee7C3E1248beaA9cE3157f9dD
 ## License
 Meta-AR-VR.ai is licensed under the MIT License. See the LICENSE file for details.
+
 
