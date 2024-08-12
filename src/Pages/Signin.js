@@ -22,7 +22,7 @@ export const Signin = () => {
       console.log(response.data);
 
       localStorage.setItem("token", response.data.token);
-      navigate("/")
+      navigate("/verse")
     } else {
       console.log(response.data.message);
       navigate("/Signin")
