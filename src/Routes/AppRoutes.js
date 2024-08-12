@@ -23,6 +23,7 @@ import Contentbox from '../Component/Contentbox';
 import MenuOffice from '../Component/MenuOffice';
 import ShowModel from '../Component/ShowModel';
 import ConnectMetamask from '../Pages/ConnectMetamask';
+import Landingpage from '../Pages/Landingpage.js';
 
 const AppRoutes = () => {
     return (
@@ -30,14 +31,13 @@ const AppRoutes = () => {
             <SocketManager />
             <Router>
                 <Routes>
-                    <Route element={<Enviroment />} path='/' />
-                    <Route element={<MessageBox />} path='/vc' />
+                    {/* <Route element={<MessageBox />} path='/vc' />
                     <Route element={<Contentbox />} path='/dc' />
                     <Route element={<AskaiInput/>} path='/ai' />
                     <Route element={<ProcessML />} path='/sc' />
-                    <Route element={<ConnectMetamask />} path='/mc' />
-
-                    <Route path="/signup" element={<Signup />} />
+                    <Route element={<ConnectMetamask />} path='/mc' /> */}
+                    <Route element={<Landingpage />} path='/'/>                    <Route path="/signup" element={<Signup />} />
+                    <Route element={<Enviroment />} path='/verse' />
                     <Route path="/signin" element={<Signin />} />
                     <Route path="/user/product" element={<Item />} />
                     {/* <Route element={<ArCube />}  path='/xr' /> */}
