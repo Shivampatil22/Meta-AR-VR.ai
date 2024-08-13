@@ -96,7 +96,7 @@ const Enviroment = () => {
                         <XR>
                             <Controllers />
                             <Hands />
-                            <Sky sunPosition={[100, 20, 100]} />
+                            <Sky sunPosition={[0,100,1000]} />
                             <Experience />
                         </XR>
                     </Suspense>

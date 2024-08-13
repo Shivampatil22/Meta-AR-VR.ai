@@ -1,4 +1,4 @@
-import { OrbitControls, PointerLockControls, Text3D, useFBO, useGLTF, Text } from '@react-three/drei'
+import { OrbitControls, PointerLockControls, Text3D, useFBO, useGLTF, Text,Environment } from '@react-three/drei'
 import Lights from './Lights.js'
 import { CuboidCollider, Physics, RigidBody } from '@react-three/rapier'
 import { useTexture } from '@react-three/drei'
@@ -61,6 +61,7 @@ import Gate2 from './Models/Gate2.js'
 import Gate5 from './Models/Gate5.js'
 import Gate6 from './Models/Gate6.js'
 import Gate7 from './Models/Gate7.js'
+import ShopModel from './Models/ShopModel.js'
 THREE.ColorManagement.legacyMode = false;
 
 
@@ -222,7 +223,7 @@ export default function Experience() {
         {/* <OrbitControls makeDefault /> */}
         <Physics debug gravity={[0, -10, 0]}  >
             <Cordinates />
-
+            <Environment preset="dawn" />
             <Lights />
             {/* <Char1 /> */}
             {/* <mesh castShadow position-x={ - 2 }>
@@ -242,6 +243,7 @@ export default function Experience() {
             {/* <P2/> */}
 
             <Shop />
+            <ShopModel/>
 
             // menus---------------
 
@@ -265,8 +267,14 @@ export default function Experience() {
             <Text color="white" scale={2} position={[18.527094185553183, 4, -39.17764888771349]} anchorX="center" anchorY="middle">
                 Conference Hall
             </Text>
-            <Text color="black" scale={2} rotation-y={-Math.PI / 2} position={[55.668716002058821, 5, -4.789404601485703]} anchorX="center" anchorY="middle">
+            {/* <Text color="lightblack" scale={2} rotation-y={-Math.PI / 2} position={[55.668716002058821, 5, -4.789404601485703]} anchorX="center" anchorY="middle">
                 Classroom
+            </Text> */}
+            <Text color="black" scale={2} rotation-y={-Math.PI / 2} position={[55.668716002058821, 5, -4.789404601485703]} anchorX="center" anchorY="middle">
+           AR - VR Classroom
+            </Text>
+            <Text color="black" scale={2} rotation-y={-Math.PI / 2} position={[33.668716002058821, 5, 19.89404601485703]} anchorX="center" anchorY="middle">
+Meta-Store
             </Text>
             <Text color="yellow" scale={4} rotation-y={-Math.PI} position={[32.527094185553183, 8, 80.17764888771349]} anchorX="center" anchorY="middle">
                 Threatre Hall
