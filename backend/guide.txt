@@ -1,0 +1,25 @@
+Here’s the complete list of all API endpoints along with their purposes:
+
+### Assignments
+
+- **`POST /assignment`**: Create a new assignment.
+- **`GET /assignment/:assignmentId`**: Retrieve an assignment by its ID.
+
+### Assignment Submissions
+
+- **`POST /submission`**: Submit a new assignment.
+- **`GET /submissions/:assignmentId`**: Get all submissions for a specific assignment.
+- **`PUT /submission/:submissionId`**: Update an existing assignment submission.
+
+### Students
+
+- **`POST /student`**: Create a new student.
+- **`GET /student/:studentId`**: Retrieve a student by their ID.
+- **`GET /student/students`**: Get a list of all students.
+- **`PUT /student/add/assignment`**: Assign Assigment to all students.
+
+### Teachers
+
+- **`POST /teacher`**: Create a new teacher.
+- **`GET /teacher/:teacherId`**: Retrieve a teacher by their ID.
+- **`PUT /teacher/:teacherId/material`**: Update material URLs for a teacher.

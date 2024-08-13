@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import rootRouter from './routes/index.js';
 import path from 'path';
-
+import mongoose from 'mongoose';
 const app = express();
 const PORT = process.env.PORT || 3002;
 const currentDirectory = process.cwd();
@@ -18,7 +18,19 @@ console.log(path.join(currentDirectory, 'public'));
 // API routes
 app.use("/api/v1", rootRouter);
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+
+//dbconnection
+mongoose
+  .connect("mongodb+srv://shivampatil222004:aKzbaayoVkjjMSk8@cluster0.0ca0aus.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/Spark", {
+    autoIndex: true
+  })
+  .then(() => {
+    app.listen(PORT)
+    console.log("connected",PORT);
+  })
+  .catch((err) => {
+    console.log("something went wrong")
+    console.log(err)
+  })
+
+  
