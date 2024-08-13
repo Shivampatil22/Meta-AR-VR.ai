@@ -1,18 +1,26 @@
 // backend/routes/user.js
-
 import express from 'express';
 import zod from 'zod';
 import jwt from 'jsonwebtoken';
 // const path = require('path');
 import path from 'path';
-
-import { User, Account } from '../db.js';
+import { Account } from '../models/account.js';
 import { JWT_SECRET } from '../config.js';
 import { authMiddleware } from '../middleware.js';
-import { uploadFileWithCurl } from '../Ml/NullPointer.js';
-import { downloadFile } from '../Ml/NullPointerD.js';
+import { User } from '../models/user.js';
 
+
+// import { Account } from '../../Meta-AR-VR.ai/backend/models/account.js';
+// import { JWT_SECRET } from '../../Meta-AR-VR.ai/backend/config.js';
+// import { authMiddleware } from '../../Meta-AR-VR.ai/backend/middleware.js';
+// import { uploadFileWithCurl } from '../../Meta-AR-VR.ai/backend/Ml/NullPointer.js';
+// import { downloadFile } from '../../Meta-AR-VR.ai/backend/Ml/NullPointerD.js';
+
+// import { askai } from '../../Meta-AR-VR.ai/backend/Ml/langchain.js';
 import { askai } from '../Ml/langchain.js';
+import{downloadFile} from "../Ml/NullPointerD.js"
+import {uploadFileWithCurl} from "../Ml/NullPointer.js"
+
 const currentDirectory = process.cwd()
 // const targetDirectory = path.join(currentDirectory, '..', 'public');
 
@@ -29,6 +37,7 @@ const signupBody = zod.object({
 });
 
 router.post("/signup", async (req, res) => {
+    
     const { success } = signupBody.safeParse(req.body);
     if (!success) {
         return res.status(411).json({
@@ -182,14 +191,14 @@ router.post('/upload', async (req, res) => {
         });
 });
 
-// router.get('/askai', async (req, res) => {
-//     const pathtofile = "public/lecture.pdf";
-//     const response = await askai(pathtofile);
-//     res.json({
-//         message: "ai responded!",
-//         data: response
-//     });
-// });
+router.get('/askai', async (req, res) => {
+    const pathtofile = "public/lecture.pdf";
+    const response = await askai(pathtofile);
+    res.json({
+        message: "ai responded!",
+        data: response
+    });
+});
 
 router.get("/bulk", async (req, res) => {
     const filter = req.query.filter || "";

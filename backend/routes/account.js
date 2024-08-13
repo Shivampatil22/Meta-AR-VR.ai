@@ -1,8 +1,12 @@
+import { authMiddleware } from '../middleware.js';
+import { Account } from '../models/account.js';
+
 // backend/routes/account.js
-import express from 'express';
-import { authMiddleware } from '../middleware.js'; // Assuming index.js is the entry file for middleware folder
-import { Account } from '../db.js'; // Assuming index.js is the entry file for db folder
-import mongoose from 'mongoose';
+import express from "express"
+// const { authMiddleware } = require('../middleware'); // Assuming index.js is the entry file for middleware folder
+// const { Account } = require('../models/account'); // Assuming index.js is the entry file for db folder
+
+
 
 const router = express.Router();
 
