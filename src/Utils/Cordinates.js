@@ -31,7 +31,7 @@ const Cordinates = () => {
 
   characters.map((char) => {
     if (char.id === socket.id) {
-
+console.log(char.position);
       setMe(char)
     }
     // console.log(char.position);

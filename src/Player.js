@@ -28,7 +28,7 @@ import { Text } from '@react-three/drei'
 const Player = ({ id, position, rotation, delta, aanimations }) => {
 
 // const [_up] = useAtom(upAtom)
-
+console.log(position)
 
     const [showmenuAtom, setShowMenuAtom] = useAtom(menuAtom)
     /**

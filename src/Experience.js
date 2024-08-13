@@ -1,4 +1,4 @@
-import { OrbitControls, PointerLockControls, useFBO, useGLTF } from '@react-three/drei'
+import { OrbitControls, PointerLockControls, Text3D, useFBO, useGLTF, Text } from '@react-three/drei'
 import Lights from './Lights.js'
 import { CuboidCollider, Physics, RigidBody } from '@react-three/rapier'
 import { useTexture } from '@react-three/drei'
@@ -209,7 +209,6 @@ export default function Experience() {
 
         if (!_up) {
             setup(true);
-            console.log('upuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuup')
         }
     } else {
         if (_up) {
@@ -251,7 +250,27 @@ export default function Experience() {
             <SelectiveRenderInside2 />
             <ProcessMLclassroom />
             <MessageBoxclassroom />
-
+            {/* <Text3D  scale={0.1} >
+                Meta-Store!
+                <meshNormalMaterial />
+            </Text3D>    */}
+            {/*  [2.668716002058821, -0.9, -19.789404601485703] */}
+            {/* [14.527094185553183, -0.9, -39.17764888771349 */}
+            <Text color="black" scale={2} rotation-y={Math.PI/2} position={[1.668716002058821, 5, -21.789404601485703]} anchorX="center" anchorY="middle">
+                VR Meeting Room
+            </Text>
+            <Text color="black" scale={2} rotation-y={Math.PI / 2} position={[0.668716002058821, 5, 15.789404601485703]} anchorX="center" anchorY="middle">
+                Chilling Room
+            </Text>
+            <Text color="white" scale={2} position={[18.527094185553183, 4, -39.17764888771349]} anchorX="center" anchorY="middle">
+                Conference Hall
+            </Text>
+            <Text color="black" scale={2} rotation-y={-Math.PI / 2} position={[55.668716002058821, 5, -4.789404601485703]} anchorX="center" anchorY="middle">
+                Classroom
+            </Text>
+            <Text color="yellow" scale={4} rotation-y={-Math.PI} position={[32.527094185553183, 8, 80.17764888771349]} anchorX="center" anchorY="middle">
+                Threatre Hall
+            </Text>
             //-----------------
 
             <mesh receiveShadow position-y={- 1} rotation-x={- Math.PI * 0.5} scale={300}>
@@ -353,14 +372,14 @@ export default function Experience() {
             <TicketBooth />
             <TheatreStage />
             <WhiteRoom />
-            <Gate1/>
-            <Gate2/>
-            <Gate3/>
-            <Gate4/>
-            <Gate5/>
-            <Gate6/>
-            <Gate7/>
-            
+            <Gate1 />
+            <Gate2 />
+            <Gate3 />
+            <Gate4 />
+            <Gate5 />
+            <Gate6 />
+            <Gate7 />
+
             {/* <DoubtPanel /> */}
             <Classroom />
             {/* <Presentationiframe / */}
