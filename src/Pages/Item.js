@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { useRef } from 'react';
 import { EasePack } from 'gsap/all';
 import { Button } from '../Component/Button';
+import Products from '../Products/Products';
 const Item = (props) => {
 
 
@@ -105,5 +106,12 @@ const Item = (props) => {
         </>
     )
 }
+// const Item = (props)=>{
+//     return(
+    
+//         <Products/>
+        
+//     )
+// }
 
 export default Item

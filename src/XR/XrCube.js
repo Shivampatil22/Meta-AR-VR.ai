@@ -1,27 +1,38 @@
-import React from 'react'
-import { VRButton, ARButton, XR, Controllers, Hands } from '@react-three/xr'
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-const XrCube = () => {
-    const cubeRef = useRef();
+import { OrbitControls, useFBX, useGLTF } from '@react-three/drei';
 
-    useFrame((state, delta) => {
-        cubeRef.current.rotation.y += delta;
-    });
+const XrModel = ({ url }) => {
+    // url = "./models/shop.glb"
+    const modelRef = useRef();
+    const model = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/desk/model.gltf');
+
+    // Rotate the model or cube
+    // useFrame((state, delta) => {
+    //     if (modelRef.current) {
+    //         modelRef.current.rotation.y += delta;
+    //     }
+    // });
+
     return (
-
         <>
             <OrbitControls />
             <ambientLight />
-            <mesh ref={cubeRef} scale={1} >
+                <primitive  object={model} scale={1}  position={[0,0,0]}/>
+            {/* <mesh ref={modelRef} scale={1}>
                 <boxGeometry args={[2, 2, 2]} />
                 <meshStandardMaterial color={"mediumpurple"} />
-            </mesh>
-
+            </mesh> */}
+            {/* {url ? (
+                <
+            ) : (
+                <mesh ref={modelRef} scale={1}>
+                    <boxGeometry args={[2, 2, 2]} />
+                    <meshStandardMaterial color={"mediumpurple"} />
+                </mesh>
+            )} */}
         </>
-    )
-}
+    );
+};
 
-export default XrCube
+export default XrModel;

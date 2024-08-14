@@ -6,7 +6,7 @@ import "./Xr.css";
 import { Html } from '@react-three/drei';
 import Iframe from '../Iframe/Iframe';
 
-export default function XrContainer() {
+export default function XrContainer(props) {
     const [showIframe, setShowIframe] = useState(false);
 
     // Function to toggle between showing the Canvas and the iframe
