@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { useProgress, Html } from '@react-three/drei';
 import { Suspense } from 'react';
@@ -17,8 +17,12 @@ import AskaiInput from '../Component/AskaiInput.js';
 import UpMenu from '../Component/UpMenu.js';
 import Authorize from '../Component/Authorize.js'; // Assuming this is the correct import
 
-const Loader = () => {
+const Loader = ({ onLoaded }) => {
     const { progress, item, loaded, total } = useProgress();
+
+    if (progress === 100) {
+        onLoaded();
+    }
 
     return (
         <Html center>
@@ -49,19 +53,102 @@ const Loader = () => {
 
 
 
+const CharacterSelectMenu = () => {
+    const [selectedCharacter, setSelectedCharacter] = useState(null);
+    const [isMenuVisible, setIsMenuVisible] = useState(true); // State to control menu visibility
+
+    const handleMouseEnter = (character) => {
+        setSelectedCharacter(character);
+    };
+
+    const handleCharacterSelect = (character) => {
+        setSelectedCharacter(character);
+        setIsMenuVisible(false); // Hide menu when a character is selected
+    };
+
+    if (!isMenuVisible) {
+        return null; // Don't render the menu if it's not visible
+    }
+
+    return (
+        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-75 z-[9999]">
+            <div className="grid grid-cols-5 bg-white rounded-sm w-1/2 h-auto">
+                <div
+                    className="col-span-3 flex items-center justify-center border rounded-sm bg-cover bg-center"
+                    style={{
+                        backgroundImage: selectedCharacter
+                            ? `url(${selectedCharacter.image})`
+                            : "url('https://i.pinimg.com/originals/31/b8/e4/31b8e491bddc127331560c20b0a33fda.gif')",
+                        backgroundPosition: selectedCharacter ? 'center top' : 'center center',
+                    }}
+                >
+                    {selectedCharacter ? (
+                        <img src={selectedCharacter.image} alt={selectedCharacter.name} className="w-64 h-64 hidden" />
+                    ) : (
+                        <p className="text-xl font-semibold text-white">Select a character</p>
+                    )}
+                </div>
+                <div className="col-span-2 grid grid-rows-2">
+                    <div
+                        className="flex flex-col items-center border rounded-sm p-0 cursor-pointer bg-cover bg-center"
+                        onMouseEnter={() => handleMouseEnter({
+                            name: 'Character 1',
+                            image: 'https://i.pinimg.com/originals/31/b8/e4/31b8e491bddc127331560c20b0a33fda.gif'
+                        })}
+                        onClick={() => handleCharacterSelect({
+                            name: 'Character 1',
+                            image: 'https://i.pinimg.com/originals/31/b8/e4/31b8e491bddc127331560c20b0a33fda.gif'
+                        })}
+                        style={{
+                            backgroundImage: "url('https://i.pinimg.com/originals/31/b8/e4/31b8e491bddc127331560c20b0a33fda.gif')",
+                            backgroundPosition: 'center center',
+                        }}
+                    >
+                        <p className="text-xl font-semibold mb-2 text-white">Character 1</p>
+                    </div>
+                    <div
+                        className="flex flex-col items-center border rounded-sm p-4 cursor-pointer bg-cover bg-[center_bottom]"
+                        onMouseEnter={() => handleMouseEnter({
+                            name: 'Character 2',
+                            image: 'https://i.pinimg.com/originals/e4/08/b1/e408b16aa9d3fdaa6f9c65a44c4b7f59.gif'
+                        })}
+                        onClick={() => handleCharacterSelect({
+                            name: 'Character 2',
+                            image: 'https://i.pinimg.com/originals/e4/08/b1/e408b16aa9d3fdaa6f9c65a44c4b7f59.gif'
+                        })}
+                        style={{
+                            backgroundImage: "url('https://i.pinimg.com/originals/e4/08/b1/e408b16aa9d3fdaa6f9c65a44c4b7f59.gif')",
+                            backgroundPosition: 'center top', // Adjusting the position to show the head
+                        }}
+                    >
+                        <p className="text-xl font-semibold mb-2 text-white">Character 2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 
 
 const Enviroment = () => {
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [isCharacterSelectVisible, setIsCharacterSelectVisible] = useState(false);
+
+    const handleLoaderFinish = () => {
+        setIsLoaded(true);
+        setIsCharacterSelectVisible(true);
+    };
+
     const response = Authorize(); // Authorization check
     if (response != null) {
         console.log("navigate to signup");
-        
         // Logic to navigate to signup could be added here, if required
-        // it is being handled correctly
     }
 
     return (
         <>
+            {isCharacterSelectVisible && <CharacterSelectMenu />}
             <VoiceChat />
             <KeyboardControls
                 map={[
@@ -92,11 +179,11 @@ const Enviroment = () => {
                         position: [2.5, 4, 6],
                     }}
                 >
-                    <Suspense fallback={<Loader />}>
+                    <Suspense fallback={<Loader onLoaded={handleLoaderFinish} />}>
                         <XR>
                             <Controllers />
                             <Hands />
-                            <Sky sunPosition={[0,100,1000]} />
+                            <Sky sunPosition={[0, 100, 1000]} />
                             <Experience />
                         </XR>
                     </Suspense>
