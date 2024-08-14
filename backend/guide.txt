@@ -283,6 +283,36 @@ Body:
 }
 
 
+ATTENDANCE
+base url:https://your-api-url.com/api/v1/attendance
+1.
+POST /
+Description:
+Records attendance for a specific date, teacher, and a list of students.
+Request Body:
+{
+  "date": "2024-08-14",          // Date of the attendance (format: YYYY-MM-DD)
+  "teacherId": "64d9f0f7e9fef00b32e65f3c",  // ID of the teacher recording the attendance
+  "studentIds": [                // Array of student IDs present
+    "64d9f101e9fef00b32e65f3d", 
+    "64d9f103e9fef00b32e65f3e"
+  ]
+}
+
+2. GET /teacher/:teacherId
+Description:
+Fetches all attendance records associated with a specific teacher.
+
+
+3.GET /date/:teacherId/:date
+Description:
+Fetches attendance records for a specific teacher on a specific date.
+
+4. GET /student/:studentId
+Description:
+Finds how many days a particular student was present based on attendance records.
+
+
 
 
 
