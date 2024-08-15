@@ -1,8 +1,9 @@
 // backend/routes/account.js
 import express from 'express';
 import mongoose from 'mongoose';
-import { Attendance } from '../models/attendance';
+import { Attendance } from '../models/attendance.js';
 // POST route to note the attendance
+const router=express.Router();
 router.post('/', async (req, res) => {
     try {
         const { date, teacherId, studentIds } = req.body;
@@ -67,7 +68,7 @@ router.get('/student/:studentId', async (req, res) => {
 });
 
 
-const router = express.Router();
+
 
 
 export default router;
