@@ -18,6 +18,7 @@ import { useFrame, useThree } from '@react-three/fiber'
 // import { useRef } from 'react'
 import { useState, useEffect } from 'react'
 import { Text } from '@react-three/drei'
+import { PlayerXP } from './Utils/PlayerXP'
 // import { upAtom } from '../Utils/upatom';
 
 // import { updateCamera } from '@react-three/fiber/dist/declarations/src/core/utils'
@@ -29,7 +30,8 @@ const Player = ({ id, position, rotation, delta, aanimations }) => {
 
 // const [_up] = useAtom(upAtom)
 console.log(position)
-
+const [XP] = useAtom(PlayerXP);
+console.log(XP);
     const [showmenuAtom, setShowMenuAtom] = useAtom(menuAtom)
     /**
      * 
@@ -455,6 +457,36 @@ console.log(position)
         <>
             {/* <PointerLockControls ref={controlsRef} /> */}
             {/* <Text  >hirh </Text>  */}
+            <Text
+                scale={[0.1, 0.1, 0.1]}
+                color="#31ff2b" // default
+                anchorX="center" // default
+                anchorY="bottom" // default
+                position={[position[0], position[1] + 3.93, position[2]]}
+                rotation-y={rotation[0]}
+                maxWidth={10}
+                fontSize={1}
+                fillOpacity={1}
+            >
+
+              LVL -  {XP}
+
+            </Text> 
+            <Text
+                scale={[0.1, 0.1, 0.1]}
+                color="#e92dff" // default
+                anchorX="center" // default
+                anchorY="bottom" // default
+                position={[position[0], position[1] + 3.83, position[2]]}
+                rotation-y={rotation[0]}
+                maxWidth={10}
+                font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
+fillOpacity={1}
+            >
+
+                 HuihUI
+               
+            </Text>  
 
             <Text
                 scale={[0.1, 0.1, 0.1]}
@@ -463,9 +495,15 @@ console.log(position)
                 anchorY="bottom" // default
                 position={[position[0], position[1] + 3.7, position[2]]}
                 rotation-y={rotation[0]}
+                maxWidth={10}
+
             >
-                {socket.id}
-            </Text>            <OrbitControls ref={controlsRef} />
+                
+                {socket.id} {" "}
+            </Text>    
+            
+            
+                    <OrbitControls ref={controlsRef} />
 
             {/* <RigidBody position={[position[0] , position[1], position[2]]} colliders={'cuboid'} friction={0}> */}
             <primitive object={model} scale={0.02} ref={body} position-y={-0.9} castShadow />

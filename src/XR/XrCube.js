@@ -5,7 +5,10 @@ import { Center, OrbitControls, useFBX, useGLTF ,PresentationControls,Stage} fro
 const XrModel = ({ url }) => {
     // url = "./models/shop.glb"
     const modelRef = useRef();
-    const model = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/desk/model.gltf');
+    const model = useGLTF(url);
+
+
+    // const model = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/desk/model.gltf');
 
     // Rotate the model or cube
     // useFrame((state, delta) => {
