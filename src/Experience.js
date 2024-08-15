@@ -64,6 +64,7 @@ import Gate7 from './Models/Gate7.js'
 import ShopModel from './Models/ShopModel.js'
 import Market from './Models/Market.js'
 import Store2 from './Models/Store2.js'
+import StoreGuy from './Models/StoreGuy.js'
 THREE.ColorManagement.legacyMode = false;
 
 
@@ -278,10 +279,10 @@ export default function Experience() {
             <Text color="black" scale={2} rotation-y={-Math.PI / 2} position={[33.668716002058821, 5, 19.89404601485703]} anchorX="center" anchorY="middle">
 Meta-Store
             </Text>
-            <Text color="black" scale={2} rotation-y={-Math.PI / 2} position={[67.668716002058821, 5.3, 45.89404601485703]} anchorX="center" anchorY="middle">
+            {/* <Text color="black" scale={2} rotation-y={-Math.PI / 2} position={[67.668716002058821, 5.3, 45.89404601485703]} anchorX="center" anchorY="middle">
                 SuparMarket
-            </Text>
-            <Text color="black" scale={2} rotation-y={-Math.PI / 2} position={[67.668716002058821, 5.3, 63.89404601485703]} anchorX="center" anchorY="middle">
+            </Text> */}
+            <Text color="black" scale={2} rotation-y={-Math.PI / 2} position={[67.668716002058821, 5.3, 43.89404601485703]} anchorX="center" anchorY="middle">
                     Clothes Store
             </Text>
             <Text color="yellow" scale={4} rotation-y={-Math.PI} position={[32.527094185553183, 8, 80.17764888771349]} anchorX="center" anchorY="middle">
@@ -397,6 +398,7 @@ Meta-Store
             <Gate7 />
 <Market/>
 <Store2/>
+<StoreGuy/>
             {/* <DoubtPanel /> */}
             <Classroom />
             {/* <Presentationiframe / */}

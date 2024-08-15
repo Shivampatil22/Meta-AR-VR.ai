@@ -29,7 +29,6 @@ const [showai] = useAtom(AIshowatom)
         ani.push(idle.animations[0])
         ani.push(greet.animations[0])
     }
-console.log("booooooooooooooooooooooooooooooooooooooot")
 console.log(talkAtom,talkLocal);
     if(talkAtom != talkLocal){
         if(currentAnimation!= 'talk'){

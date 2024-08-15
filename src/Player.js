@@ -18,6 +18,8 @@ import { useFrame, useThree } from '@react-three/fiber'
 // import { useRef } from 'react'
 import { useState, useEffect } from 'react'
 import { Text } from '@react-three/drei'
+import { ClothMenuAtom } from './Utils/ClothMenuAtom';
+
 import { PlayerXP } from './Utils/PlayerXP'
 // import { upAtom } from '../Utils/upatom';
 
@@ -32,7 +34,12 @@ const Player = ({ id, position, rotation, delta, aanimations }) => {
 console.log(position)
 const [XP] = useAtom(PlayerXP);
 console.log(XP);
-    const [showmenuAtom, setShowMenuAtom] = useAtom(menuAtom)
+    const [showmenuAtom, setShowMenuAtom] = useAtom(menuAtom) 
+     const [clothmenu, setClothMenu] = useAtom(ClothMenuAtom);
+    const DefaultCordinates2 = new THREE.Vector3(65.84252749750952, -0.9, 45.95368943309931);
+    const [showClothmenu, setShowClothMenu] = useState(false);
+
+    
     /**
      * 
      * 
@@ -49,7 +56,7 @@ console.log(XP);
 
 
     // const DefaultCordinates = [30,-1,20];   // iykuk
-    const DefaultCordinates = new THREE.Vector3(30, 1, 20);
+    const DefaultCordinates = new THREE.Vector3(65.8718369374643, -0.9, 33.88149327444435);
 
     /**
      * 
@@ -61,6 +68,7 @@ console.log(XP);
 
 
     const [showmenu, setShowMenu] = useState(false);
+
 
     /**
      * 
@@ -113,12 +121,14 @@ console.log(XP);
 
     const camera = useThree((state) => state.camera)
     showmenu ? SmoothDelay(true) : setShowMenuAtom(false);
+    
     // GSAP working , just working 
+    // [65.10081066764732, -0.9, 28.995583921465915]
     if (showmenu) {
         tl.to(camera.position, {
-            x: 18,
+            x: 65.10081066764732,
             y: 3,
-            z: 18,
+            z: 24.995583921465915,
             ease: "easein",
 
         });
@@ -128,7 +138,17 @@ console.log(XP);
 
 
 
-    }
+    }else if(showClothmenu) {
+        gsap.to(camera.position, {
+            x: 56.84252749750952,
+            y: 3,
+            z: 45.995583921465915,
+            ease: "easein",
+        });
+    } 
+
+    
+
 
 
 
@@ -301,7 +321,7 @@ console.log(XP);
 
         const bodyposition = body.current.position;
 
-        if (body.current.position.distanceTo(DefaultCordinates) <= 7) {
+        if (body.current.position.distanceTo(DefaultCordinates) <= 4) {
             // console.log("body.current.position.distanceTo(DefaultCordinates in ");
             // setShowMenu(()=>{ if(showmenu) })
 
@@ -312,8 +332,18 @@ console.log(XP);
             showmenu ? setShowMenu(false) : null;
         }
 
+        if (body.current.position.distanceTo(DefaultCordinates2) <= 4 && !showClothmenu) {
+            setShowClothMenu(true);
+        } else if (body.current.position.distanceTo(DefaultCordinates2) >4 && showClothmenu) {
+            setShowClothMenu(false);
+            setClothMenu(false);
+        }
+
         // console.log(showmenu);
-        if (!showmenu) {
+        console.log(
+            showClothmenu, showmenu
+        )
+        if (!showmenu && !showClothmenu) {
             const cameraPosition = new THREE.Vector3();
             cameraPosition.copy(bodyposition);
             cameraPosition.z += 5.25;
@@ -495,7 +525,6 @@ fillOpacity={1}
                 anchorY="bottom" // default
                 position={[position[0], position[1] + 3.7, position[2]]}
                 rotation-y={rotation[0]}
-                maxWidth={10}
 
             >
                 
