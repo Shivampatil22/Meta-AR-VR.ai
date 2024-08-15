@@ -90,7 +90,7 @@ const CharacterSelectMenu = () => {
                 </div>
                 <div className="col-span-2 grid grid-rows-2">
                     <div
-                        className="flex flex-col items-center border rounded-sm p-0 cursor-pointer bg-cover bg-center"
+                        className="flex flex-col items-center border hover:scale-110 duration-300 transition-all ease-in-out rounded-sm p-0 cursor-pointer bg-cover bg-center"
                         onMouseEnter={() => handleMouseEnter({
                             name: 'Character 1',
                             image: 'https://i.pinimg.com/originals/31/b8/e4/31b8e491bddc127331560c20b0a33fda.gif'
@@ -107,7 +107,7 @@ const CharacterSelectMenu = () => {
                         <p className="text-xl font-semibold mb-2 text-white">Character 1</p>
                     </div>
                     <div
-                        className="flex flex-col items-center border rounded-sm p-4 cursor-pointer bg-cover bg-[center_bottom]"
+                        className="flex flex-col items-center border rounded-sm p-4 hover:scale-110 duration-300 transition-all ease-in-out cursor-pointer bg-cover bg-[center_bottom]"
                         onMouseEnter={() => handleMouseEnter({
                             name: 'Character 2',
                             image: 'https://i.pinimg.com/originals/e4/08/b1/e408b16aa9d3fdaa6f9c65a44c4b7f59.gif'
