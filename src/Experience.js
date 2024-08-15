@@ -22,6 +22,7 @@ import { P2 } from './Models/P2.js'
 import { LowPoly } from './Utils/LowPoly.js'
 import Office from './Models/Office.js'
 import Venue from './Models/Venue.js'
+import Billboard from './Models/Billboard.js'
 import Room from './Models/Room.js'
 import WhiteRoom from './Models/WhiteRoom.js'
 import Presentation from './Iframe/Presentationiframe.js'
@@ -65,6 +66,9 @@ import ShopModel from './Models/ShopModel.js'
 import Market from './Models/Market.js'
 import Store2 from './Models/Store2.js'
 import StoreGuy from './Models/StoreGuy.js'
+import Cloths from './Products/Cloths.js'
+import Mannequinn from './Models/Mannequinn.js'
+import Podium from './Models/Podium.js'
 THREE.ColorManagement.legacyMode = false;
 
 
@@ -276,13 +280,13 @@ export default function Experience() {
             <Text color="black" scale={2} rotation-y={-Math.PI / 2} position={[55.668716002058821, 5, -4.789404601485703]} anchorX="center" anchorY="middle">
            AR - VR Classroom
             </Text>
-            <Text color="black" scale={2} rotation-y={-Math.PI / 2} position={[33.668716002058821, 5, 19.89404601485703]} anchorX="center" anchorY="middle">
+            <Text color="black" scale={2} rotation-y={-Math.PI / 2} position={[61.84252749750952, 5, 54.75368943309931]} anchorX="center" anchorY="middle">
 Meta-Store
             </Text>
             {/* <Text color="black" scale={2} rotation-y={-Math.PI / 2} position={[67.668716002058821, 5.3, 45.89404601485703]} anchorX="center" anchorY="middle">
                 SuparMarket
             </Text> */}
-            <Text color="black" scale={2} rotation-y={-Math.PI / 2} position={[67.668716002058821, 5.3, 43.89404601485703]} anchorX="center" anchorY="middle">
+            <Text color="black" scale={2} rotation-y={-Math.PI / 2} position={[60.668716002058821, 5.8, 42.59404601485703]} anchorX="center" anchorY="middle">
                     Clothes Store
             </Text>
             <Text color="yellow" scale={4} rotation-y={-Math.PI} position={[32.527094185553183, 8, 80.17764888771349]} anchorX="center" anchorY="middle">
@@ -401,9 +405,12 @@ Meta-Store
 <StoreGuy/>
             {/* <DoubtPanel /> */}
             <Classroom />
+            <Mannequinn/>
             {/* <Presentationiframe / */}
             <Banner />
             <FileSchool />
+            <Podium/>
+            <Billboard />
             {/* <primitive object={wilow} scale={1} /> */}
             {/* <SocketManager /> */}
             {/* <VoiceChat/> */}

@@ -36,7 +36,7 @@ const [XP] = useAtom(PlayerXP);
 console.log(XP);
     const [showmenuAtom, setShowMenuAtom] = useAtom(menuAtom) 
      const [clothmenu, setClothMenu] = useAtom(ClothMenuAtom);
-    const DefaultCordinates2 = new THREE.Vector3(65.84252749750952, -0.9, 45.95368943309931);
+    const DefaultCordinates2 = new THREE.Vector3(60.84252749750952, -0.9, 42.95368943309931);
     const [showClothmenu, setShowClothMenu] = useState(false);
 
     
@@ -140,9 +140,9 @@ console.log(XP);
 
     }else if(showClothmenu) {
         gsap.to(camera.position, {
-            x: 56.84252749750952,
+            x: 53.84252749750952,
             y: 3,
-            z: 45.995583921465915,
+            z: 42.995583921465915,
             ease: "easein",
         });
     } 
@@ -334,6 +334,7 @@ console.log(XP);
 
         if (body.current.position.distanceTo(DefaultCordinates2) <= 4 && !showClothmenu) {
             setShowClothMenu(true);
+            setClothMenu(true); 
         } else if (body.current.position.distanceTo(DefaultCordinates2) >4 && showClothmenu) {
             setShowClothMenu(false);
             setClothMenu(false);
@@ -341,7 +342,7 @@ console.log(XP);
 
         // console.log(showmenu);
         console.log(
-            showClothmenu, showmenu
+            clothmenu, menuAtom
         )
         if (!showmenu && !showClothmenu) {
             const cameraPosition = new THREE.Vector3();

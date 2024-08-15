@@ -9,10 +9,11 @@ import { PlayerXP } from '../Utils/PlayerXP'
 import "./Xr.css"; // Assuming you have other styles here
 
 export default function XrContainer(props) {
-    const [xp,setXP] = useAtom(PlayerXP);
+    const [xp, setXP] = useAtom(PlayerXP);
     const [showDetails, setShowDetails] = useState(false);
     const [orderMessage, setOrderMessage] = useState('');
     const [orderPlaced, setOrderPlaced] = useState(false);
+    const [showAR, setShowAR] = useState(false); // State to handle Enter AR popup
 
     // Function to toggle between showing the Canvas and the details popup
     const toggleDetails = () => {
@@ -31,7 +32,7 @@ export default function XrContainer(props) {
             setOrderMessage('Order Placed Successfully!');
             setOrderPlaced(true);
             toast.success('Order Placed');
-            setXP(xp+1);
+            setXP(xp + 1);
             toast.success('Leveled UP!');
         }, 2000); // 2 second delay to simulate order processing
     };
@@ -49,6 +50,11 @@ export default function XrContainer(props) {
         return stars;
     };
 
+    // Function to toggle AR popup
+    const toggleAR = () => {
+        setShowAR(!showAR);
+    };
+
     return (
         <>
             <div className="container2">
@@ -60,9 +66,9 @@ export default function XrContainer(props) {
                     ) : null}
                 </Canvas>
                 {!showDetails ? (
-                    <div className="Productinfo mt-2">
+                    <div className="Productinfo mt-2 flex">
                         <button
-                            onClick={() => alert('ENTER AR')}
+                            onClick={toggleAR}
                             className="px-4 py-2 bg-blue-800 text-white rounded-md transition-all duration-300 hover:bg-blue-600"
                         >
                             Enter AR
@@ -135,21 +141,36 @@ export default function XrContainer(props) {
                             </>
                         ) : (
                             <>
-                            <div className='w-full h-full flex flex-col justify-betweeen items-center'>
-
-
-                                <div className="mt-4 p-2 bg-green-500 text-white rounded text-center">
-                                    Order Placed Successfully!
-                                </div>
-                                <button
-                                className="mt-4 px-4 py-2  text-[14px]  border-white text-white rounded-sm transition-all duration-300 hover:bg-gray-200 hover:text-black"
-                                    onClick={() => alert('Order Details clicked')}
-                                    >
-                                    Order Details
-                                </button>
+                                <div className='w-full h-full flex flex-col justify-between items-center'>
+                                    <div className="mt-4 p-2 bg-green-500 text-white rounded text-center">
+                                        Order Placed Successfully!
                                     </div>
+                                    <button
+                                        className="mt-4 px-4 py-2  text-[14px]  border-white text-white rounded-sm transition-all duration-300 hover:bg-gray-200 hover:text-black"
+                                        onClick={() => alert('Order Details clicked')}
+                                    >
+                                        Order Details
+                                    </button>
+                                </div>
                             </>
                         )}
+                    </div>
+                </div>
+            )}
+
+            {showAR && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[10000]">
+                    <div className="relative bg-white bg-opacity-10 backdrop-blur-lg p-4 rounded-lg shadow-lg max-w-lg w-full transition-opacity duration-300">
+                        <button
+                            onClick={toggleAR}
+                            className="absolute top-2 right-2 border-none text-white hover:text-gray-400 text-sm"
+                        >
+                            &times;
+                        </button>
+                        {/* AR content with a dummy QR code */}
+                        <div className="w-full h-[500px]  mt-4 flex items-center justify-center">
+                            <img src="https://i.pinimg.com/736x/a8/69/40/a86940a4ed8a69539b341f3c414c47b3.jpg" alt="QR Code" className="w-[500px] h-fit" />
+                        </div>
                     </div>
                 </div>
             )}

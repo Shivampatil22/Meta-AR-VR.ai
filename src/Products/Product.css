@@ -78,10 +78,10 @@
     background-color: rgba(47, 255, 241, 0.52);
 } */
 
-.left-portion > div:hover,
+/* .left-portion > div:hover,
 .right-portion > div:hover {
   background-color: rgba(47, 255, 241, 0.52);
-}
+} */
 
 .scrollbar-hidden {
   scrollbar-width: none;
@@ -96,4 +96,8 @@
     backdrop-filter: blur(10px);
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.glassmorphism-item2 {
+    backdrop-filter: blur(10px);
+   
 }
