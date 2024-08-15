@@ -11,6 +11,13 @@ body,
   height: 100%;
   background: ivory;
 }
+
+
+* {
+  font-family: "Moderustic", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
 .container {
   position: relative;
   width: 100%;
@@ -28,3 +35,21 @@ body,
   display: none;
 }
 
+
+.signUpBackground {
+  background-image: url("../public/assets/images/pikaso_embed.png");
+  background-size: cover;
+  /* Make the background image cover the entire element */
+  background-position: center;
+  /* Center the background image */
+  background-repeat: no-repeat;
+  /* Prevent the background image from repeating */
+}
+
+.glassCard{
+      backdrop-filter: blur(22px) saturate(200%);
+        -webkit-backdrop-filter: blur(22px) saturate(200%);
+        background-color: rgba(17, 25, 40, 0.18);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.125);
+}

@@ -14,10 +14,10 @@ export const Signup = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  return <div className="bg-slate-300 h-full flex justify-center">
+  return <div className="signUpBackground h-full flex justify-center ">
     <div className="flex flex-col justify-center align-center">
-      <div className="rounded-lg bg-white w-80 text-center p-2 h-max px-4">
-        <Heading label={"Sign up"} />
+      <div className="rounded-lg glassCard w-60 text-center h-max px-4">
+        <SubHeading label={"Sign up"} size={"large"}/>
         {/* <SubHeading label={"Enter your infromation to create an account"} /> */}
         <InputBox onChange={e => {
           setFirstName(e.target.value);
